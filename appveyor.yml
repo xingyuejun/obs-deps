@@ -22,7 +22,7 @@ matrix:
   fast_finish: true
 
 init:
-  - ps: if (0) { iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1')) } #rdp debug
+  - ps: if (1) { iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1')) } #rdp debug
 install:
   - call script\set_variable.cmd
   - mkdir "%pkg_prefix_win%\bin\" "%pkg_prefix_win%\include\" "%pkg_prefix_win%\lib\pkgconfig"
@@ -37,7 +37,7 @@ install:
 #  - C:\msys64\usr\bin\pacman -Su --noconfirm
   - C:\msys64\usr\bin\pacman -S --noconfirm mingw-w64-x86_64-nasm
   - C:\msys64\usr\bin\pacman -Q
-#  - cmd
+  - cmd
   - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
   # disable /GS (Buffer Security Check) to get better performance
   # -Zc:inline is disabled when -GL is on
